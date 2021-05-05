@@ -8,11 +8,16 @@ window.addEventListener('DOMContentLoaded', async function() {
       event.preventDefault()
   
       // - Get a reference to the element containing the user-entered location
+
       let locationInput = document.querySelector(`#location`)
+
+      // reference to element containing the user-entered days 
       let daysInput = document.querySelector(`#days`)
   
       // - Get the user-entered location from the element's value
       let location = locationInput.value
+
+      // user-entered days from element value
       let days = daysInput.value
   
       // - Check to see if the user entered anything; if so:
@@ -50,19 +55,23 @@ window.addEventListener('DOMContentLoaded', async function() {
           </div>
         `
     
-
+        // Store a reference for the "forecast" element 
         let forecastElement = document.querySelector(`.forecast`)
 
+        // Create a sentence for the total days 
         forecastElement.innerHTML = `<div class="text-center space-y-8">
         <div class="font-bold text-3xl">${days} Day Forecast</div>`
         
-
+        // Create a for loop based on the number of days that the user entered
       for(let i = 0; i < days; i++) {
 
+        // round the max temp to integer 
          let maxTempRound = Math.round(dailyForecast.forecastday[i].day.maxtemp_f)
 
+         // round the min temp to integer
          let minTempRound = Math.round(dailyForecast.forecastday[i].day.mintemp_f)
 
+         // in the for loop, create a forecast for each day using json data
         forecastElement.insertAdjacentHTML(`beforeend`,`
           <div class="text-center space-y-8">
         
